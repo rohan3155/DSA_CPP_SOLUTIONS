@@ -1,0 +1,33 @@
+# Build files
+*.out
+*.o
+*.exe
+*.a
+*.so
+*.dll
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# VSCode
+.vscode/
+
+# CLion
+.idea/
+
+# Output folder
+output/
+Output/
+out/
+bin/
+build/
+
+# MacOS noise
+.DS_Store
+
+# Temp
+*.log
+*.tmp
