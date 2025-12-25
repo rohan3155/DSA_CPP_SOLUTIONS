@@ -21,45 +21,40 @@ class Solution
 public:
         Node *connect(Node *root)
         {
-                if (root == NULL || root->left == NULL)
-                {
+                if (root == NULL)
                         return NULL;
-                }
+
                 queue<Node *> q;
                 q.push(root);
                 q.push(NULL);
 
                 Node *prev = NULL;
 
-                while (q.size() > 0)
+                while (!q.empty())
                 {
                         Node *curr = q.front();
                         q.pop();
+
                         if (curr == NULL)
                         {
-                                if (q.size() == 0)
-                                {
-                                        break;
-                                }
-                                q.push(NULL);
+                                prev = NULL;
+                                if (!q.empty())
+                                        q.push(NULL);
+                                continue;
                         }
-                        else
+
+                        if (prev != NULL)
                         {
-                                if (curr->left != NULL)
-                                {
-                                        q.push(curr->left);
-                                }
-                                if (curr->right != NULL)
-                                {
-                                        q.push(curr->right);
-                                }
-                                if (prev != NULL)
-                                {
-                                        prev->next = curr;
-                                }
+                                prev->next = curr;
                         }
                         prev = curr;
+
+                        if (curr->left)
+                                q.push(curr->left);
+                        if (curr->right)
+                                q.push(curr->right);
                 }
+
                 return root;
         }
 };
